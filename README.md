@@ -7,6 +7,8 @@ Este proyecto fue creado con ReactJs usando [Create React App](https://github.co
 
 En el directorio de descarga:
 
+### npm install (para instalar las dependencias)
+
 ### `npm start`
 
 Ejecuta la app en un servidor local.<br />
