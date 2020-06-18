@@ -1,4 +1,4 @@
-Visualicador de mapas usando ReactJs con Leaflet para el proyecto arbolesurbanos.com.ar
+Visualizador de mapas usando ReactJs con Leaflet para el proyecto arbolesurbanos.com.ar
 (https://www.arbolesurbanos.com.ar)
 
 Este proyecto fue creado con ReactJs usando [Create React App](https://github.com/facebook/create-react-app).
