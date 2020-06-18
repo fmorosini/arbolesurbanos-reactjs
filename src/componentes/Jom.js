@@ -17,7 +17,9 @@ class Jom extends React.Component{
           nombrevulgar: "",        
          localidad: ""},
 
-         muestraModal: false
+         muestraModal: false,
+         html: ""
+
          
       }
 
@@ -25,6 +27,20 @@ class Jom extends React.Component{
         
 
     }  
+
+    clica = () => {
+
+     this.traedata().then((html) => {this.setState({html: html.content.rendered})}) 
+
+    }
+
+    traedata = async () => {
+
+        let data = await fetch("https://www.arbolesurbanos.com.ar/wp-json/wp/v2/posts/9")
+
+        return await data.json()
+
+    }
 
          
     handleOnChange = (e) => {
@@ -197,7 +213,12 @@ class Jom extends React.Component{
                                        
             </div>          
 
+            <button onClick={this.clica}>clica!</button>
+
             
+              <div dangerouslySetInnerHTML={{__html: this.state.html}}></div>
+            
+
             </React.Fragment>
           )
     }

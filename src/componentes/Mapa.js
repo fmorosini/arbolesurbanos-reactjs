@@ -89,8 +89,7 @@ class Mapa extends React.Component{
    
   render(){
 
-    console.log("render mapa")
-   
+      
     let arbolite = this.props.datos
 
       return(
