@@ -1,0 +1,3 @@
+https://mapa.arbolesurbanos.com.ar/geoserver/arbolado/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=arbolado:arbolitos&outputFormat=application%2Fjson
+
+mapa.arbolesurbanos.com.ar/geoserver/arbolado/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=arbolado:arbolitos&outputFormat=SHAPE-ZIP
