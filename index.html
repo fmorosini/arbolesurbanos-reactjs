@@ -1,7 +1,77 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Repositorio de código del proyecto arbolesurbanos.com.ar</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>    </head>
+        <style>
+            
+            body{
+                color: #555
+            }
+
+            .logo{
+                margin-left: auto;
+                margin-right: auto;
+                width: 400px;
+            }
+
+            .row{
+                margin: 30px;
+            }
+
+            .centrado{
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            a{
+                text-decoration: none;
+                color: mediumaquamarine;                
+            }
+
+            a:hover{
+                color: mediumaquamarine;
+            }
+        
+        </style>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <img class="logo" src="https://www.arbolesurbanos.com.ar/wp-content/uploads/2019/08/logo2-e1574714539494.png" alt="logo">
+        </div>
+        <div class="row">
+            <h1 class="centrado"><a href="https://www.arbolesurbanos.com.ar" target="_blank">Arboles urbanos</a></h1>
+        </div>
+        <div class="row">
+            <div class="col-md-4">           
+            </div>
+            <div class="col-md-4">   
+                <h4>
+                    Mapeo del arbolado urbano de localidades del Corredor de Los Lagos de Norpatagonia, abarcando las ciudades de El Bolsón, San Carlos de Bariloche, San Martín de Los Andes, Villa La Angostura, Junín de Los Andes y Aluminé
+                </h4>
+            </div>
+            <div class="col-md-4">        
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-3">
+                <p>Repositorio en Git Hub. Código del Visualizador de Mapas desarrollado en ReactJs con el plugin LeafletJs. Visualiza sobre una capa Open Street Maps los árboles censados trayéndolos en formato GeoJson desde un Web Service WFS en un servidor Geoserver. Los datos están alojados en una Base de Datos Espacial (PostgreSQL + PostGIS</p>
+                <a href="https://github.com/fmorosini/arbolesurbanos-reactjs" target="_blank">Ir al repositorio</a>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <p>Datos abiertos de las capas de arbolado, generados "al vuelo" desde Geoserver en formato GeoJson ó ESRI Shape</p>
+                <a href="https://mapa.arbolesurbanos.com.ar/geoserver/arbolado/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=arbolado:arbolitos&outputFormat=application%2Fjson" target="_blank">Dataset en GeoJson</a><br />
+                <a href="https://mapa.arbolesurbanos.com.ar/geoserver/arbolado/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=arbolado:arbolitos&outputFormat=SHAPE-ZIP" target="_blank">Dataset en ESRI Shape</a>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>
