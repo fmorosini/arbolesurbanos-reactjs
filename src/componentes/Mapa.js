@@ -84,13 +84,14 @@ class Mapa extends React.Component{
 
  
   }
-
     
    
   render(){
 
       
     let arbolite = this.props.datos
+
+    
 
       return(
 
@@ -106,7 +107,7 @@ class Mapa extends React.Component{
               zoom={this.props.zoom}  
               animated = {true}
               useFlyTo = {true}
-              viewport = {this.state.parametrosMapa.viewport !== this.props.viewport ? this.state.viewport : this.props.viewport} 
+              viewport = {this.state.parametrosMapa.viewport !== this.props.viewport ? this.state.viewport : this.props.viewport}               
               //onViewportChanged={this.cambiaViewPort} 
               >
             
@@ -145,7 +146,13 @@ class Mapa extends React.Component{
            
       
       </React.Fragment>
+
+      
     )
+
+    
+
+
   }
   
 }
