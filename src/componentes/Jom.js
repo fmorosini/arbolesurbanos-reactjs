@@ -44,6 +44,12 @@ class Jom extends React.Component{
       return [dos,uno]
     
     }
+
+    termino = () => {
+
+      this.props.termino()
+
+    }
   
 
     
@@ -193,7 +199,8 @@ class Jom extends React.Component{
                 localidad={this.state.filtro.localidad}
                 centro={centro}
                 zoom = {zoom}
-                viewport={viewport}/>     
+                viewport={viewport}
+                termino={this.termino}/>     
 
               </div>
                                        

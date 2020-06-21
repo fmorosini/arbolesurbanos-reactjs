@@ -6,6 +6,7 @@ import L from 'leaflet'
 import Minificha from './mini-ficha.js'
 import Ubicacion from './ubicacion.js'
 import Home from './home.js'
+import LlevaCuentaPopUps from './llevaCuentaPopUps.js'
 require('react-leaflet-markercluster/dist/styles.min.css');
 
 
@@ -84,6 +85,14 @@ class Mapa extends React.Component{
 
  
   }
+
+  terminoDeCargarPopUps = () => {
+
+    this.props.termino()
+
+  }
+
+  
     
    
   render(){
@@ -125,6 +134,9 @@ class Mapa extends React.Component{
                       posicion[1] = arbol.geometry.coordinates[0]
                         return(                  
                         <Marker position={posicion} key={i} icon={icono}>
+                        
+                        <LlevaCuentaPopUps numero={i + 1} cantidad={arbolite.length} termino={this.terminoDeCargarPopUps}/>
+
                         <Popup>                          
                               <Minificha nombrevulgar={arbol.properties.nombrevulgar} 
                               nombrecientifico={arbol.properties.nombrecientifico} 
@@ -133,8 +145,11 @@ class Mapa extends React.Component{
                               follaje={arbol.properties.follaje}
                               tipo={arbol.properties.tipo}
                               thumbnail={arbol.properties.thumbnail}/>
+
+                              
                           
                       </Popup>
+
                     </Marker>
                     
                       )

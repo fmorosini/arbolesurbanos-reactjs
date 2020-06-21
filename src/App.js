@@ -9,13 +9,11 @@ import PreCarga from './recursos/precarga.gif'
 
 class App extends React.Component {
     
-    traerGeoJson = async (capa,modal) => {
+    traerGeoJson = async (capa) => {
         
         
-        if(modal)
-        {
-            this.setState((state) => (state.cargando = true))
-        }
+        this.setState((state) => (state.cargando = true))
+        
         
         let url = "https://mapa.arbolesurbanos.com.ar/geoserver/arbolado/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=arbolado:" + capa + "&outputFormat=application%2Fjson&srsName=EPSG:4326";
             let opciones = {
@@ -26,11 +24,7 @@ class App extends React.Component {
         const respuesta = await fetch(url, opciones)
         const datos = await respuesta.json()  
         
-        if(modal === false)
-        {
-            this.setState((state) => (state.cargando = false))
-        }
-
+        
         return datos
     }
 
@@ -39,11 +33,11 @@ class App extends React.Component {
     componentDidMount = () => {
         
 
-        this.traerGeoJson("arbolitos",true).then((geoDatos) => {this.setState({geoDatos: geoDatos})})
+        this.traerGeoJson("arbolitos").then((geoDatos) => {this.setState({geoDatos: geoDatos})})
 
-        this.traerGeoJson("especies",true).then((datos) => {this.setState({especies: datos})})
+        this.traerGeoJson("especies").then((datos) => {this.setState({especies: datos})})
 
-        this.traerGeoJson("localidades",false).then((datos) => {this.setState({localidades: datos})})
+        this.traerGeoJson("localidades").then((datos) => {this.setState({localidades: datos})})
 
         
 
@@ -121,6 +115,12 @@ class App extends React.Component {
 
         
     }
+
+    termino = () => {
+
+        this.setState((state) => (state.cargando = false))
+
+    }
  
 
     render() 
@@ -133,7 +133,7 @@ class App extends React.Component {
                 <Modal show={this.state.cargando} backdrop="static" size="lg" centered> 
                     
                     <Modal.Header>
-                        <Modal.Title>Trayendo datos...</Modal.Title>
+                        <Modal.Title>Cargando datos...</Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>
@@ -145,7 +145,7 @@ class App extends React.Component {
 
                 <div className='container-fluid'>
             
-                    <Jom geoDatos={this.state.geoDatos} localidades={this.state.localidades} especies={this.state.especies}/>
+                    <Jom geoDatos={this.state.geoDatos} localidades={this.state.localidades} especies={this.state.especies} termino={this.termino}/>
 
                 </div>
 
