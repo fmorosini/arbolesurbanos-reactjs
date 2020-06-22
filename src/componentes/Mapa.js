@@ -7,6 +7,7 @@ import Minificha from './mini-ficha.js'
 import Ubicacion from './ubicacion.js'
 import Home from './home.js'
 import LlevaCuentaPopUps from './llevaCuentaPopUps.js'
+import UbicacionRT from './ubicacionRT.js';
 require('react-leaflet-markercluster/dist/styles.min.css');
 
 
@@ -123,6 +124,7 @@ class Mapa extends React.Component{
               {/*<WMSTileLayer  url="http://wms.ign.gob.ar/geoserver/wms" layers='capabaseargenmap' format='image/png' transparent={false} attribution="IGN" maxZoom={30} />  */}
               <WMSTileLayer  url=" https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" format='image/png' transparent={false} attribution="Open Street Maps" maxZoom={19} />
              
+                  <UbicacionRT />
                    
                     <MarkerClusterGroup disableClusteringAtZoom={18}>
                     {arbolite.map((arbol,i) => {

@@ -205,9 +205,7 @@ class Jom extends React.Component{
 
               </div>
                                        
-            </div>          
-
-           <UbicacionRT />
+            </div>  
 
             </React.Fragment>
           )

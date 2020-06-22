@@ -1,5 +1,7 @@
 import React from 'react'
-import GPS from '../recursos/gps.png'
+import {Marker} from 'react-leaflet'
+import L from 'leaflet'
+import IconoUbicacion from '../recursos/ubicacion.png'
 
 class UbicacionRT extends React.Component{
 
@@ -25,18 +27,10 @@ class UbicacionRT extends React.Component{
     obtenerCoordenadasGPS = () => {
 
         navigator.geolocation.getCurrentPosition((posicion) => (this.setState((state) => (state.GeolocationCoordinates = posicion.coords))))   
+        console.log(this.state.GeolocationCoordinates)
     }
 
-    componentDidUpdate = (p,s) => {        
-        
-        if(s !== this.state)
-        {
-            console.log(s.GeolocationCoordinates)
-        }
-
-    }
-
-    iniciaSeguimientoLocalizacion = () => {
+    componentDidMount = () => {
 
         window.setInterval(this.obtenerCoordenadasGPS,5000)
 
@@ -46,11 +40,10 @@ class UbicacionRT extends React.Component{
     
     render(){
 
-        return(
+        const propiedadesIcono = {iconUrl: {IconoUbicacion}}
+        const icono = new L.Icon(propiedadesIcono)
 
-            <a id="btnGPS"  className="btn btn-outline-primary" onClick={this.iniciaSeguimientoLocalizacion}><img src={GPS} className={"icono"} alt=""/></a> 
-
-        )
+        return <Marker position={[this.state.GeolocationCoordinates.latitude, this.state.GeolocationCoordinates.longitude]} icon={icono} />
 
     }
 
