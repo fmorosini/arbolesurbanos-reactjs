@@ -137,7 +137,7 @@ class Mapa extends React.Component{
                         
                         <LlevaCuentaPopUps numero={i + 1} cantidad={arbolite.length} termino={this.terminoDeCargarPopUps}/>
 
-                        <Popup>                          
+                        <Popup autoPan={true} autoPanPadding={[30,30]} closeButton={false}>                          
                               <Minificha nombrevulgar={arbol.properties.nombrevulgar} 
                               nombrecientifico={arbol.properties.nombrecientifico} 
                               magnitud={arbol.properties.magnitud}
