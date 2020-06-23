@@ -31,7 +31,7 @@ class UbicacionRT extends React.Component{
         
         if(this.state.GeolocationCoordinates.longitude !== 0 && this.state.GeolocationCoordinates.latitude !== 0){
         
-            this.props.pasaUbicacion(this.state.GeolocationCoordinates, true)
+           this.setState({seguimiento: true, GeolocationCoordinates: [posicion.latitude,posicion.longitude]})
         }
         else{
 
@@ -67,6 +67,15 @@ class UbicacionRT extends React.Component{
 
             }
 
+        }
+
+    }
+
+    componentDidUpdate = (p,s) => {
+
+        if(this.state !== s)
+        {
+            this.props.pasaUbicacion(this.state.GeolocationCoordinates, true)
         }
 
     }

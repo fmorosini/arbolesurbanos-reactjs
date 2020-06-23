@@ -75,7 +75,22 @@ class Mapa extends React.Component{
   
   pasaUbicacion = (ubicacion,seguimiento) => {
     
-    this.setState({parametrosMapa: {viewport: {center: [ubicacion.latitude, ubicacion.longitude], zoom: 19}, centro:  [ubicacion.latitude, ubicacion.longitude], zoom: 19}, seguimiento: seguimiento})
+    let sigueposicion = seguimiento
+
+    if(ubicacion.latitude !== 0 && ubicacion.longitude !== 0)
+    {
+
+      sigueposicion = true
+      this.setState({parametrosMapa: {viewport: {center: [ubicacion.latitude, ubicacion.longitude], zoom: 19}, centro:  [ubicacion.latitude, ubicacion.longitude], zoom: 19}, seguimiento: sigueposicion})
+
+    }
+    else{
+
+        this.setState((state) => (state.seguimiento = false))
+
+    }
+    
+    
 
   }
 
@@ -117,7 +132,7 @@ class Mapa extends React.Component{
               <WMSTileLayer  url=" https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" format='image/png' transparent={false} attribution="Open Street Maps" maxZoom={19} />
              
                   
-                  {this.state.seguimiento ? <Marker icon={iconoSeguimiento} position={this.state.parametrosMapa.centro}/> : false}
+                  {this.state.seguimiento ? <Marker icon={iconoSeguimiento} position={this.state.parametrosMapa.centro} /> : false}
 
                     <MarkerClusterGroup disableClusteringAtZoom={18}>
                     {arbolite.map((arbol,i) => {
