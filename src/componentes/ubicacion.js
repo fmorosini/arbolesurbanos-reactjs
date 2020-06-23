@@ -31,7 +31,7 @@ class Ubicacion extends React.Component{
         
         if(s !== this.state)
         {
-            this.props.pasaUbicacion(s.GeolocationCoordinates)
+            this.props.pasaUbicacion(s.GeolocationCoordinates,false)
         }
 
     }

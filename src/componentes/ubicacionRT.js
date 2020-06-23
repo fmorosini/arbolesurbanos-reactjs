@@ -1,6 +1,6 @@
 import React from 'react'
-import {Marker} from 'react-leaflet'
-import L from 'leaflet'
+import GPS from '../recursos/ubicacion.png'
+
 
 class UbicacionRT extends React.Component{
 
@@ -18,27 +18,54 @@ class UbicacionRT extends React.Component{
             latitude: 0,
             longitude: 0,
             speed: null       
-           }
+           },
+
+           seguimiento: false,
+           idWatchPosition: 0
         }
 
     }
 
-    obtenerCoordenadasGPS = () => {
-
-        navigator.geolocation.getCurrentPosition((posicion) => (this.setState((state) => (state.GeolocationCoordinates = posicion.coords))))  
+    obtenerCoordenadasGPS = (posicion) => {
+        
         
         if(this.state.GeolocationCoordinates.longitude !== 0 && this.state.GeolocationCoordinates.latitude !== 0){
         
-            this.props.pasaUbicacion(this.state.GeolocationCoordinates)
+            this.props.pasaUbicacion(this.state.GeolocationCoordinates, true)
+        }
+        else{
+
+            this.setState((state) => (state.seguimiento = false))
 
         }
     }
 
-    componentDidMount = () => {
+    activaSeguimiento = () => {
 
         if(navigator.geolocation){
 
-            window.setInterval(this.obtenerCoordenadasGPS,5000)
+            if(!this.state.seguimiento){
+
+                this.setState((state) => (state.idWatchPosition = navigator.geolocation.watchPosition((posicion) => this.obtenerCoordenadasGPS(posicion))))
+                
+                if(this.state.GeolocationCoordinates.longitude !== 0 && this.state.GeolocationCoordinates.latitude !== 0){
+
+                    this.setState((state) => (state.seguimiento = true))
+
+                }
+                else{
+
+                    this.setState((state) => (state.seguimiento = false))
+
+                }
+
+            }
+            else{
+
+                this.setState((state) => (state.seguimiento = false))
+                navigator.geolocation.clearWatch(this.state.idWatchPosition)
+
+            }
 
         }
 
@@ -48,18 +75,13 @@ class UbicacionRT extends React.Component{
     
     render(){
 
-        const propiedadesIcono = {iconUrl: "https://www.arbolesurbanos.com.ar/iconos/ubicacion.png"}
-        const icono = new L.Icon(propiedadesIcono)
+       let className = (this.state.seguimiento ? "btn btn-outline-primary active" : "btn btn-outline-secondary")
 
-        if(this.state.GeolocationCoordinates.longitude !== 0 && this.state.GeolocationCoordinates.latitude !== 0){
+        return(
 
-            return <Marker position={[this.state.GeolocationCoordinates.latitude, this.state.GeolocationCoordinates.longitude]} icon={icono} />
-        }
-        else{
+            <a id="btnGPS"  className={className} onClick={this.activaSeguimiento}><img src={GPS} className={"icono"} alt=""/></a> 
 
-            return false
-
-        }
+        )
 
     }
 

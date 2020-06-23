@@ -8,7 +8,6 @@ import Ubicacion from './ubicacion.js'
 import Home from './home.js'
 import LlevaCuentaPopUps from './llevaCuentaPopUps.js'
 import UbicacionRT from './ubicacionRT.js';
-import IconoUbicacion from '../recursos/gps.png'
 require('react-leaflet-markercluster/dist/styles.min.css');
 
 
@@ -26,7 +25,7 @@ class Mapa extends React.Component{
         viewport: {center: [-40.65, -71.3498], zoom: 7}
       },
 
-      geoLocalizacion: false
+      seguimiento: false
 
     }
 
@@ -58,12 +57,12 @@ class Mapa extends React.Component{
 
     if(localidad_actual.length === 0)
     {
-      this.setState({viewport: {center: [-40.65, -71.3498], zoom: 7}, centro: [-40.65, -71.3498], zoom: 7})
+      this.setState({parametrosMapa: {viewport: {center: [-40.65, -71.3498], zoom: 7}, centro: [-40.65, -71.3498], zoom: 7}})
     }
     else
     {   
 
-      this.setState({viewport: {center: this.revertir(localidad_actual[0].geometry.coordinates), zoom: localidad_actual[0].properties.zoom}, centro: this.revertir(localidad_actual[0].geometry.coordinates), zoom: localidad_actual[0].properties.zoom})
+      this.setState({parametrosMapa: {viewport: {center: this.revertir(localidad_actual[0].geometry.coordinates), zoom: localidad_actual[0].properties.zoom}, centro: this.revertir(localidad_actual[0].geometry.coordinates), zoom: localidad_actual[0].properties.zoom}})
        
     }
 
@@ -74,40 +73,16 @@ class Mapa extends React.Component{
   }
 
   
-  pasaUbicacion = (ubicacion) => {
+  pasaUbicacion = (ubicacion,seguimiento) => {
     
-    this.setState({viewport: {center: [ubicacion.latitude, ubicacion.longitude], zoom: 19}, centro:  [ubicacion.latitude, ubicacion.longitude], zoom: 19})
+    this.setState({parametrosMapa: {viewport: {center: [ubicacion.latitude, ubicacion.longitude], zoom: 19}, centro:  [ubicacion.latitude, ubicacion.longitude], zoom: 19}, seguimiento: seguimiento})
 
   }
 
-  cambiaViewPort = (v) => {
-
-    let vcentro = v.center
-    let vzoom = v.zoom
-
-    this.setState((state) => (state.parametrosMapa.viewport = v))
-
- 
-  }
-
+  
   terminoDeCargarPopUps = () => {
 
     this.props.termino()
-
-  }
-
-  toggleGeoLocalizacion = () => {
-
-      if(this.state.geoLocalizacion){
-
-          this.setState((state) => (state.geoLocalizacion = false))
-
-      }
-      else{
-
-          this.setState((state) => (state.geoLocalizacion = true))
-
-      }
 
   }
     
@@ -116,18 +91,10 @@ class Mapa extends React.Component{
 
       
     let arbolite = this.props.datos
-
-    let claseGPS = "btn btn-outline-primary"
-
-    if(this.state.geoLocalizacion){
-
-        claseGPS = "btn btn-outline-primary active"
-
-    }
-    else
-    {
-      claseGPS = "btn btn-outline-secondary"
-    }
+    const urlIconoSeguimiento = "https://www.arbolesurbanos.com.ar/iconos/ubicacion.png"
+    const propiedadesIconoSeguimiento = {iconUrl: urlIconoSeguimiento, iconAnchor:[22,21]}
+    const iconoSeguimiento = new L.Icon(propiedadesIconoSeguimiento)
+    
 
       return(
 
@@ -135,9 +102,8 @@ class Mapa extends React.Component{
 
             
 
-            {/*<Ubicacion pasaUbicacion={this.pasaUbicacion}/>*/}
-
-            <a className={claseGPS} onClick={this.toggleGeoLocalizacion}><img src={IconoUbicacion} className="icono"></img></a>
+            <Ubicacion pasaUbicacion={this.pasaUbicacion}/>
+            <UbicacionRT pasaUbicacion={this.pasaUbicacion}/>           
             <Home irHome={this.irHome}/>
     
             {/*<Map center={this.props.centro} zoom={this.props.zoom} crs={L.CRS.EPSG4326}>*/}
@@ -145,15 +111,13 @@ class Mapa extends React.Component{
               zoom={this.props.zoom}  
               animated = {true}
               useFlyTo = {true}
-              viewport = {this.state.parametrosMapa.viewport !== this.props.viewport ? this.state.viewport : this.props.viewport}               
-              //onViewportChanged={this.cambiaViewPort} 
-              >
+              viewport = {this.state.parametrosMapa.viewport !== this.props.viewport ? this.state.parametrosMapa.viewport : this.props.viewport}>
             
               {/*<WMSTileLayer  url="http://wms.ign.gob.ar/geoserver/wms" layers='capabaseargenmap' format='image/png' transparent={false} attribution="IGN" maxZoom={30} />  */}
               <WMSTileLayer  url=" https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" format='image/png' transparent={false} attribution="Open Street Maps" maxZoom={19} />
              
                   
-                  {this.state.geoLocalizacion ? <UbicacionRT pasaUbicacion={this.pasaUbicacion}/> : false}
+                  {this.state.seguimiento ? <Marker icon={iconoSeguimiento} position={this.state.parametrosMapa.centro}/> : false}
 
                     <MarkerClusterGroup disableClusteringAtZoom={18}>
                     {arbolite.map((arbol,i) => {
