@@ -1,7 +1,6 @@
 import React from 'react'
 import {Marker} from 'react-leaflet'
 import L from 'leaflet'
-import IconoUbicacion from '../recursos/ubicacion.png'
 
 class UbicacionRT extends React.Component{
 
@@ -26,13 +25,22 @@ class UbicacionRT extends React.Component{
 
     obtenerCoordenadasGPS = () => {
 
-        navigator.geolocation.getCurrentPosition((posicion) => (this.setState((state) => (state.GeolocationCoordinates = posicion.coords))))   
-        console.log(this.state.GeolocationCoordinates)
+        navigator.geolocation.getCurrentPosition((posicion) => (this.setState((state) => (state.GeolocationCoordinates = posicion.coords))))  
+        
+        if(this.state.GeolocationCoordinates.longitude !== 0 && this.state.GeolocationCoordinates.latitude !== 0){
+        
+            this.props.pasaUbicacion(this.state.GeolocationCoordinates)
+
+        }
     }
 
     componentDidMount = () => {
 
-        window.setInterval(this.obtenerCoordenadasGPS,5000)
+        if(navigator.geolocation){
+
+            window.setInterval(this.obtenerCoordenadasGPS,5000)
+
+        }
 
     }
 
@@ -40,10 +48,18 @@ class UbicacionRT extends React.Component{
     
     render(){
 
-        const propiedadesIcono = {iconUrl: {IconoUbicacion}}
+        const propiedadesIcono = {iconUrl: "https://www.arbolesurbanos.com.ar/iconos/ubicacion.png"}
         const icono = new L.Icon(propiedadesIcono)
 
-        return <Marker position={[this.state.GeolocationCoordinates.latitude, this.state.GeolocationCoordinates.longitude]} icon={icono} />
+        if(this.state.GeolocationCoordinates.longitude !== 0 && this.state.GeolocationCoordinates.latitude !== 0){
+
+            return <Marker position={[this.state.GeolocationCoordinates.latitude, this.state.GeolocationCoordinates.longitude]} icon={icono} />
+        }
+        else{
+
+            return false
+
+        }
 
     }
 

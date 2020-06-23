@@ -8,6 +8,7 @@ import Ubicacion from './ubicacion.js'
 import Home from './home.js'
 import LlevaCuentaPopUps from './llevaCuentaPopUps.js'
 import UbicacionRT from './ubicacionRT.js';
+import IconoUbicacion from '../recursos/gps.png'
 require('react-leaflet-markercluster/dist/styles.min.css');
 
 
@@ -23,7 +24,9 @@ class Mapa extends React.Component{
         centro: [-40.65, -71.3498],
         zoom: 7,
         viewport: {center: [-40.65, -71.3498], zoom: 7}
-      }
+      },
+
+      geoLocalizacion: false
 
     }
 
@@ -93,7 +96,20 @@ class Mapa extends React.Component{
 
   }
 
-  
+  toggleGeoLocalizacion = () => {
+
+      if(this.state.geoLocalizacion){
+
+          this.setState((state) => (state.geoLocalizacion = false))
+
+      }
+      else{
+
+          this.setState((state) => (state.geoLocalizacion = true))
+
+      }
+
+  }
     
    
   render(){
@@ -101,7 +117,17 @@ class Mapa extends React.Component{
       
     let arbolite = this.props.datos
 
-    
+    let claseGPS = "btn btn-outline-primary"
+
+    if(this.state.geoLocalizacion){
+
+        claseGPS = "btn btn-outline-primary active"
+
+    }
+    else
+    {
+      claseGPS = "btn btn-outline-secondary"
+    }
 
       return(
 
@@ -109,7 +135,9 @@ class Mapa extends React.Component{
 
             
 
-            <Ubicacion pasaUbicacion={this.pasaUbicacion}/>
+            {/*<Ubicacion pasaUbicacion={this.pasaUbicacion}/>*/}
+
+            <a className={claseGPS} onClick={this.toggleGeoLocalizacion}><img src={IconoUbicacion} className="icono"></img></a>
             <Home irHome={this.irHome}/>
     
             {/*<Map center={this.props.centro} zoom={this.props.zoom} crs={L.CRS.EPSG4326}>*/}
@@ -124,8 +152,9 @@ class Mapa extends React.Component{
               {/*<WMSTileLayer  url="http://wms.ign.gob.ar/geoserver/wms" layers='capabaseargenmap' format='image/png' transparent={false} attribution="IGN" maxZoom={30} />  */}
               <WMSTileLayer  url=" https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" format='image/png' transparent={false} attribution="Open Street Maps" maxZoom={19} />
              
-                  <UbicacionRT />
-                   
+                  
+                  {this.state.geoLocalizacion ? <UbicacionRT pasaUbicacion={this.pasaUbicacion}/> : false}
+
                     <MarkerClusterGroup disableClusteringAtZoom={18}>
                     {arbolite.map((arbol,i) => {
                       const urlIcono = "https://www.arbolesurbanos.com.ar/iconos/" + arbol.properties.magnitud.toString() + "/" + arbol.properties.imagen
