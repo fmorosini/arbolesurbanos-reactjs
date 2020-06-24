@@ -7,7 +7,7 @@ import Minificha from './mini-ficha.js'
 import Ubicacion from './ubicacion.js'
 import Home from './home.js'
 import LlevaCuentaPopUps from './llevaCuentaPopUps.js'
-import UbicacionRT from './ubicacionRT.js';
+import MarcadorRT from './marcadorRT.js'
 require('react-leaflet-markercluster/dist/styles.min.css');
 
 
@@ -23,10 +23,7 @@ class Mapa extends React.Component{
         centro: [-40.65, -71.3498],
         zoom: 7,
         viewport: {center: [-40.65, -71.3498], zoom: 7}
-      },
-
-      seguimiento: false
-
+      }
     }
 
   }
@@ -73,24 +70,9 @@ class Mapa extends React.Component{
   }
 
   
-  pasaUbicacion = (ubicacion,seguimiento) => {
-    
-    let sigueposicion = seguimiento
+  pasaUbicacion = (ubicacion) => {
 
-    if(ubicacion.latitude !== 0 && ubicacion.longitude !== 0)
-    {
-
-      sigueposicion = true
-      this.setState({parametrosMapa: {viewport: {center: [ubicacion.latitude, ubicacion.longitude], zoom: 19}, centro:  [ubicacion.latitude, ubicacion.longitude], zoom: 19}, seguimiento: sigueposicion})
-
-    }
-    else{
-
-        this.setState((state) => (state.seguimiento = false))
-
-    }
-    
-    
+      this.setState({parametrosMapa: {viewport: {center: [ubicacion.latitude, ubicacion.longitude], zoom: 19}, centro:  [ubicacion.latitude, ubicacion.longitude], zoom: 19}})
 
   }
 
@@ -106,9 +88,7 @@ class Mapa extends React.Component{
 
       
     let arbolite = this.props.datos
-    const urlIconoSeguimiento = "https://www.arbolesurbanos.com.ar/iconos/ubicacion.png"
-    const propiedadesIconoSeguimiento = {iconUrl: urlIconoSeguimiento, iconAnchor:[22,21]}
-    const iconoSeguimiento = new L.Icon(propiedadesIconoSeguimiento)
+   
     
 
       return(
@@ -118,7 +98,7 @@ class Mapa extends React.Component{
             
 
             <Ubicacion pasaUbicacion={this.pasaUbicacion}/>
-            <UbicacionRT pasaUbicacion={this.pasaUbicacion}/>           
+            {/*<UbicacionRT pasaUbicacion={this.pasaUbicacion}/> */}
             <Home irHome={this.irHome}/>
     
             {/*<Map center={this.props.centro} zoom={this.props.zoom} crs={L.CRS.EPSG4326}>*/}
@@ -132,7 +112,7 @@ class Mapa extends React.Component{
               <WMSTileLayer  url=" https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" format='image/png' transparent={false} attribution="Open Street Maps" maxZoom={19} />
              
                   
-                  {this.state.seguimiento ? <Marker icon={iconoSeguimiento} position={this.state.parametrosMapa.centro} /> : false}
+                    <MarcadorRT activo={true} />
 
                     <MarkerClusterGroup disableClusteringAtZoom={18}>
                     {arbolite.map((arbol,i) => {

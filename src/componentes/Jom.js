@@ -2,7 +2,6 @@ import React from 'react'
 import Mapa from './Mapa.js'
 import Buscador from './buscador.js'
 import MuestraFiltros from './muestraFiltros.js'
-import UbicacionRT from './ubicacionRT.js'
 
 class Jom extends React.Component{
   
