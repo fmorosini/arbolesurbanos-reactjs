@@ -8,6 +8,7 @@ import Ubicacion from './ubicacion.js'
 import Home from './home.js'
 import LlevaCuentaPopUps from './llevaCuentaPopUps.js'
 import MarcadorRT from './marcadorRT.js'
+import IconoUbicacion from '../recursos/ubicacion.png'
 require('react-leaflet-markercluster/dist/styles.min.css');
 
 
@@ -23,7 +24,8 @@ class Mapa extends React.Component{
         centro: [-40.65, -71.3498],
         zoom: 7,
         viewport: {center: [-40.65, -71.3498], zoom: 7}
-      }
+      },
+      seguimiento: false
     }
 
   }
@@ -82,12 +84,28 @@ class Mapa extends React.Component{
     this.props.termino()
 
   }
+
+  toggleSeguimiento = () => {
+
+      if(this.state.seguimiento){
+
+          this.setState((state) => (state.seguimiento = false))
+
+      }
+      else{
+
+          this.setState((state) => (state.seguimiento = true))
+
+      }
+
+  }
     
    
   render(){
 
       
     let arbolite = this.props.datos
+    let claseBotonUbicacion = (this.state.seguimiento ? "btn btn-outline-primary active" : "btn btn-outline-secondary")
    
     
 
@@ -98,7 +116,7 @@ class Mapa extends React.Component{
             
 
             <Ubicacion pasaUbicacion={this.pasaUbicacion}/>
-            {/*<UbicacionRT pasaUbicacion={this.pasaUbicacion}/> */}
+            <a id="btnUbicacion"  className={claseBotonUbicacion} onClick={this.toggleSeguimiento}><img src={IconoUbicacion} className={"icono"} alt=""/></a> 
             <Home irHome={this.irHome}/>
     
             {/*<Map center={this.props.centro} zoom={this.props.zoom} crs={L.CRS.EPSG4326}>*/}
@@ -112,7 +130,7 @@ class Mapa extends React.Component{
               <WMSTileLayer  url=" https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" format='image/png' transparent={false} attribution="Open Street Maps" maxZoom={19} />
              
                   
-                    <MarcadorRT activo={true} />
+                    <MarcadorRT activo={this.state.seguimiento} />
 
                     <MarkerClusterGroup disableClusteringAtZoom={18}>
                     {arbolite.map((arbol,i) => {
