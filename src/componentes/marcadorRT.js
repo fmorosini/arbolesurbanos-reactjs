@@ -32,7 +32,7 @@ class MarcadorRT extends React.Component{
 
         let coordenadas = posicion.coords
         
-        console.log("coordenadas: ",coordenadas)
+        console.log("coordenadas: ",posicion)
 
         this.setState((state) => (state.GeolocationCoordinates = coordenadas))          
 
@@ -52,7 +52,7 @@ class MarcadorRT extends React.Component{
 
             if(this.props.activo){
 
-                if(true){
+                if(navigator.geolocation){
     
                     id = navigator.geolocation.watchPosition(this.obtenerCoordenadasGPS,this.errorWatch,{enableHighAccuracy: true, maximumAge: 0, timeout: 10000})
     
@@ -89,7 +89,7 @@ class MarcadorRT extends React.Component{
 
             return(
 
-                <Marker icon={iconoSeguimiento} position={posicion} />
+                <Marker icon={iconoSeguimiento} position={[posicion.latitude,posicion.longitude]} />
 
             )
         }

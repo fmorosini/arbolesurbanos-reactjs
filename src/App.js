@@ -137,7 +137,7 @@ class App extends React.Component {
                     </Modal.Header>
 
                     <Modal.Body>
-                        <center><img src={PreCarga} alt=""></img></center>
+                        <center><img src={PreCarga} alt="logo" className="logo"></img></center>
                     </Modal.Body>
 
                 
