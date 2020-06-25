@@ -5,7 +5,6 @@ import Jom from './componentes/Jom.js'
 import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/js/bootstrap.js"
 import './App.css'
-import PreCarga from './recursos/logo.png'
 
 class App extends React.Component {
     
@@ -137,7 +136,7 @@ class App extends React.Component {
                     </Modal.Header>
 
                     <Modal.Body>
-                        <center><img src={PreCarga} alt="logo" className="logo"></img></center>
+                        <center><img src="https://www.arbolesurbanos.com.ar/logo.png" alt="logo" className="logo"></img></center>
                     </Modal.Body>
 
                 

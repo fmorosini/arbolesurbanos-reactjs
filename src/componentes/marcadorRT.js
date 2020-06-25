@@ -42,6 +42,8 @@ class MarcadorRT extends React.Component{
 
         alert("Error al obtener ubicación")
 
+        navigator.geolocation.clearWatch(this.state.idWatchPosition)
+
     }
 
     componentDidUpdate = (p,s) => {
@@ -55,6 +57,8 @@ class MarcadorRT extends React.Component{
                 if(navigator.geolocation){
     
                     id = navigator.geolocation.watchPosition(this.obtenerCoordenadasGPS,this.errorWatch,{enableHighAccuracy: true, maximumAge: 0, timeout: 10000})
+
+                    this.setState((state) => (state.idWatchPosition = id))
     
                 }
     
@@ -89,7 +93,7 @@ class MarcadorRT extends React.Component{
 
             return(
 
-                <Marker icon={iconoSeguimiento} position={[posicion.latitude,posicion.longitude]} pasaubicacios={this.props.pasaUbicacion}/>
+                <Marker icon={iconoSeguimiento} position={[posicion.latitude,posicion.longitude]} pasaubicacios={this.props.pasaUbicacion(posicion)}/>
 
             )
         }
