@@ -39,9 +39,9 @@ class Mapa extends React.Component{
   
   }
 
-  irHome = () => {
+  irHome = (e) => {
 
-     
+     e.preventDefault()
     
   
     let localidad_actual = this.props.localidades.features.filter((localidad,indice) => {
@@ -85,8 +85,10 @@ class Mapa extends React.Component{
 
   }
 
-  toggleSeguimiento = () => {
+  toggleSeguimiento = (e) => {
 
+      e.preventDefault()
+      
       if(this.state.seguimiento){
 
           this.setState((state) => (state.seguimiento = false))
@@ -114,9 +116,19 @@ class Mapa extends React.Component{
 
             
 
-            <Ubicacion pasaUbicacion={this.pasaUbicacion}/>
-            <a id="btnUbicacion"  className={claseBotonUbicacion} onClick={this.toggleSeguimiento}><img src={IconoUbicacion} className={"icono"} alt=""/></a> 
-            <Home irHome={this.irHome}/>
+            <div className="row">
+                
+                <div className="col-md-4"></div>
+                
+                <div className="col-md-4">
+                  <Ubicacion pasaUbicacion={this.pasaUbicacion}/>
+                  <a id="btnUbicacion"  className={claseBotonUbicacion} onClick={this.toggleSeguimiento}><img src={IconoUbicacion} className={"icono"} alt=""/></a> 
+                  <Home irHome={this.irHome}/>
+                </div>
+          
+              <div className="col-md-4"></div>
+
+            </div>
     
             {/*<Map center={this.props.centro} zoom={this.props.zoom} crs={L.CRS.EPSG4326}>*/}
             <Map center={this.props.centro} 
