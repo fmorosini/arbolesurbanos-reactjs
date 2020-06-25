@@ -129,7 +129,7 @@ class Mapa extends React.Component{
               <WMSTileLayer  url=" https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" format='image/png' transparent={false} attribution="Open Street Maps" maxZoom={19} />
              
                   
-                    <MarcadorRT activo={this.state.seguimiento} />
+                    <MarcadorRT activo={this.state.seguimiento} pasaubicacion={this.pasaUbicacion}/>
 
                     <MarkerClusterGroup disableClusteringAtZoom={18}>
                     {arbolite.map((arbol,i) => {
