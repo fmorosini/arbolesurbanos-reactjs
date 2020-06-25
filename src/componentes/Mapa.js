@@ -116,9 +116,19 @@ class Mapa extends React.Component{
 
             
 
-            <Ubicacion pasaUbicacion={this.pasaUbicacion}/>
-            <a id="btnUbicacion"  className={claseBotonUbicacion} onClick={this.toggleSeguimiento}><img src={IconoUbicacion} className={"icono"} alt=""/></a> 
-            <Home irHome={this.irHome}/>
+            <div className="row">
+                
+                <div className="col-md-4"></div>
+                
+                <div className="col-md-4">
+                  <Ubicacion pasaUbicacion={this.pasaUbicacion}/>
+                  <a id="btnUbicacion"  className={claseBotonUbicacion} onClick={this.toggleSeguimiento}><img src={IconoUbicacion} className={"icono"} alt=""/></a> 
+                  <Home irHome={this.irHome}/>
+                </div>
+          
+              <div className="col-md-4"></div>
+
+            </div>
     
             {/*<Map center={this.props.centro} zoom={this.props.zoom} crs={L.CRS.EPSG4326}>*/}
             <Map center={this.props.centro} 

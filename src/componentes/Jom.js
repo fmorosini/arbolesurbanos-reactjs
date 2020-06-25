@@ -163,12 +163,15 @@ class Jom extends React.Component{
               
              <div className="row">
                 
-
+              <div className="col-md-4"></div>
+              
+              <div className="col-md-4">
                   <Buscador  localidades={this.props.localidades}
                   handleOnChange={this.handleOnChange} 
                   especies={this.props.especies} />  
-
-                           
+              </div>
+              
+              <div className="col-md-4"></div>  
 
             </div>  
 
