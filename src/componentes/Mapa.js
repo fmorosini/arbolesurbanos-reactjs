@@ -85,8 +85,10 @@ class Mapa extends React.Component{
 
   }
 
-  toggleSeguimiento = () => {
+  toggleSeguimiento = (e) => {
 
+      e.preventDefault()
+      
       if(this.state.seguimiento){
 
           this.setState((state) => (state.seguimiento = false))
