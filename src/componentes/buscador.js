@@ -104,9 +104,9 @@ class Buscador extends React.Component{
                     
                    
 
-                        <a id="btnBuscar" onClick={this.subeEstado} className="btn btn-outline-primary"><img src={Lupa} className="icono" alt=""/></a>
+                        <a id="btnBuscar" onClick={this.subeEstado} className="btn btn-outline-dark"><img src={Lupa} className="icono" alt=""/></a>
 
-                        <button className="btn btn-outline-primary" data-toggle="collapse" data-target="#buscador" onClick={this.handleClickMas}>
+                        <button className="btn btn-outline-dark" data-toggle="collapse" data-target="#buscador" onClick={this.handleClickMas}>
                             {this.state.botonBuscarClickeado ? "-" : "+"}
                         </button> 
                     

@@ -44,7 +44,7 @@ class BuscarPorTipo extends React.Component{
                             <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                 <div className="card-body">                                                                      
                                     <div className="dropdown">
-                                    <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">{this.state.tipo === "" ? "Tipo" : this.state.tipo}</button>
+                                    <button type="button" className="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown">{this.state.tipo === "" ? "Tipo" : this.state.tipo}</button>
                                         <div className="dropdown-menu">               
                                             <a className={claseElementoLista + (this.state.tipo === "Latifoliada" ? " active" : "")} onClick={this.handleOnClick} id="Latifoliada">Latifoliada</a>
                                             <a className={claseElementoLista + (this.state.tipo === "Conífera" ? " active" : "")} onClick={this.handleOnClick} id="Conífera">Conífera</a>

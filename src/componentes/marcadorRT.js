@@ -19,33 +19,62 @@ class MarcadorRT extends React.Component{
             longitude: 0,
             speed: null       
            },
+
            idWatchPosition: 0
         }
 
+        
+
     }
 
-    componentDidMount = () => {
 
-        if(this.props.activo){
+    obtenerCoordenadasGPS = (posicion) => {
 
-            if(navigator.geolocation){
+        let coordenadas = posicion.coords
+        
+        console.log("coordenadas: ",coordenadas)
 
-                this.setState((state) => (state.idWatchPosition = navigator.geolocation.watchPosition((posicion) => this.obtenerCoordenadasGPS(posicion))))
+        this.setState((state) => (state.GeolocationCoordinates = coordenadas))          
 
+    }
+
+    errorWatch = (error) => {
+
+        alert("alerta wachin",error)
+
+    }
+
+    componentDidUpdate = (p,s) => {
+
+        let id = 0
+        
+        if(p !== this.props){
+
+            if(this.props.activo){
+
+                if(true){
+    
+                    id = navigator.geolocation.watchPosition(this.obtenerCoordenadasGPS,this.errorWatch,{enableHighAccuracy: true, maximumAge: 0, timeout: 10000})
+    
+                }
+    
+            }
+            else{
+    
+                if(this.state.idWatchPosition !== 0){
+    
+                    navigator.geolocation.clearWatch(this.state.idWatchPosition)
+    
+                }
+    
             }
 
         }
-        else{
 
-            if(navigator.geolocation){
-
-                navigator.geolocation.clearWatch(this.state.idWatchPosition)
-
-            }
-
-        }
 
     }
+
+
 
       
     render(){

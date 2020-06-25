@@ -34,7 +34,7 @@ class SelectorLocalidades extends React.Component {
             <React.Fragment>
                 
                 <span className="dropdown">
-                    <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">{this.state.localidad === "" ? "Localidades" : this.state.localidad}</button>
+                    <button type="button" className="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown">{this.state.localidad === "" ? "Localidades" : this.state.localidad}</button>
                         <div className="dropdown-menu mandararriba">
                
                             {this.props.localidades.features.map((localidad,key) => {

@@ -31,7 +31,7 @@ class Ubicacion extends React.Component{
         
         if(s !== this.state)
         {
-            this.props.pasaUbicacion(s.GeolocationCoordinates,false)
+            this.props.pasaUbicacion(s.GeolocationCoordinates)
         }
 
     }
@@ -42,7 +42,7 @@ class Ubicacion extends React.Component{
 
         return(
 
-            <a id="btnGPS"  className="btn btn-outline-primary" onClick={this.obtenerCoordenadasGPS}><img src={GPS} className={"icono"} alt=""/></a> 
+            <a id="btnGPS"  className="btn btn-outline-dark" onClick={this.obtenerCoordenadasGPS}><img src={GPS} className={"icono"} alt=""/></a> 
 
         )
 

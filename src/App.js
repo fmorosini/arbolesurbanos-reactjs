@@ -5,7 +5,7 @@ import Jom from './componentes/Jom.js'
 import "bootstrap/dist/css/bootstrap.css"
 import "bootstrap/dist/js/bootstrap.js"
 import './App.css'
-import PreCarga from './recursos/precarga.gif'
+import PreCarga from './recursos/logo.png'
 
 class App extends React.Component {
     
@@ -133,7 +133,7 @@ class App extends React.Component {
                 <Modal show={this.state.cargando} backdrop="static" size="lg" centered> 
                     
                     <Modal.Header>
-                        <Modal.Title>Cargando datos...</Modal.Title>
+                        <Modal.Title><center>Cargando datos</center></Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body>

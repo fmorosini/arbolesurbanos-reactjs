@@ -43,7 +43,7 @@ class BuscarPorFollaje extends React.Component{
                             <div id="collapseThree" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                 <div className="card-body">                                                                      
                                     <div className="dropdown">
-                                    <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">{this.state.follaje === "" ? "Follaje" : this.state.follaje}</button>
+                                    <button type="button" className="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown">{this.state.follaje === "" ? "Follaje" : this.state.follaje}</button>
                                         <div className="dropdown-menu">               
                                             <a className={claseElementoLista + (this.state.follaje === "Caduco" ? " active" : "")} onClick={this.handleOnClick} id="Caduco">Caduco</a>
                                             <a className={claseElementoLista + (this.state.follaje === "Perenne" ? " active" : "")} onClick={this.handleOnClick} id="Perenne">Perenne</a>

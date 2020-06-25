@@ -98,14 +98,13 @@ class Mapa extends React.Component{
 
       }
 
-  }
-    
+  }    
    
   render(){
 
       
     let arbolite = this.props.datos
-    let claseBotonUbicacion = (this.state.seguimiento ? "btn btn-outline-primary active" : "btn btn-outline-secondary")
+    let claseBotonUbicacion = (this.state.seguimiento ? "btn btn-outline-success" : "btn btn-outline-dark")
    
     
 
@@ -165,8 +164,6 @@ class Mapa extends React.Component{
                     
                   </MarkerClusterGroup> 
             </Map>
-
-           
       
       </React.Fragment>
 
