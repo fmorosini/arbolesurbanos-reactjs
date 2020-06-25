@@ -40,7 +40,7 @@ class MarcadorRT extends React.Component{
 
     errorWatch = (error) => {
 
-        alert("alerta wachin",error)
+        alert("Error al obtener ubicación")
 
     }
 
@@ -85,11 +85,11 @@ class MarcadorRT extends React.Component{
         const propiedadesIconoSeguimiento = {iconUrl: urlIconoSeguimiento, iconAnchor:[22,21]}
         const iconoSeguimiento = new L.Icon(propiedadesIconoSeguimiento)
 
-        if(posicion.latitude !== 0 && posicion.longitude !== 0){
+        if(posicion.latitude !== 0 && posicion.longitude !== 0 && this.props.activo){
 
             return(
 
-                <Marker icon={iconoSeguimiento} position={[posicion.latitude,posicion.longitude]} />
+                <Marker icon={iconoSeguimiento} position={[posicion.latitude,posicion.longitude]} pasaubicacios={this.props.pasaUbicacion}/>
 
             )
         }
