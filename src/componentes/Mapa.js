@@ -39,9 +39,9 @@ class Mapa extends React.Component{
   
   }
 
-  irHome = () => {
+  irHome = (e) => {
 
-     
+     e.preventDefault()
     
   
     let localidad_actual = this.props.localidades.features.filter((localidad,indice) => {

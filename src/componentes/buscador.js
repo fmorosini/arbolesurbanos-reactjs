@@ -5,6 +5,7 @@ import SelectorLocalidades from './selectorLocalidades.js'
 import AutoCompletarNombreCientifico from './autoCompletarNombreCientifico.js'
 import AutoCompletarNombreVulgar from './autoCompletarNombreVulgar.js'
 import Lupa from '../recursos/lupa.png'
+import Filtro from '../recursos/filtro.png'
 
 class Buscador extends React.Component{      
    
@@ -17,9 +18,7 @@ class Buscador extends React.Component{
                 tipo: "",
                 follaje: "",
                 nombrecientifico: "",
-                nombrevulgar: ""},
-            botonBuscarClickeado: false,
-            filtroAplicado: false
+                nombrevulgar: ""}
             }
         }    
 
@@ -63,18 +62,7 @@ class Buscador extends React.Component{
 
     }   
 
-    handleClickMas = () => {
-
-        if(this.state.botonBuscarClickeado)
-        {
-            this.setState({botonBuscarClickeado: false})
-        }
-        else{
-            this.setState({botonBuscarClickeado: true})
-        }
-
-    }
-
+    
    
  
    
@@ -106,8 +94,8 @@ class Buscador extends React.Component{
 
                         <a id="btnBuscar" onClick={this.subeEstado} className="btn btn-outline-dark"><img src={Lupa} className="icono" alt=""/></a>
 
-                        <button className="btn btn-outline-dark" data-toggle="collapse" data-target="#buscador" onClick={this.handleClickMas}>
-                            {this.state.botonBuscarClickeado ? "-" : "+"}
+                        <button className="btn btn-outline-dark" data-toggle="collapse" data-target="#buscador" >
+                            <img src={Filtro} className="icono" alt="filtrar"></img>
                         </button> 
                     
 
