@@ -93,7 +93,7 @@ class MarcadorRT extends React.Component{
 
             return(
 
-                <Marker icon={iconoSeguimiento} position={[posicion.latitude,posicion.longitude]} pasaubicacios={this.props.pasaUbicacion(posicion)}/>
+                <Marker icon={iconoSeguimiento} position={[posicion.latitude,posicion.longitude]} pasaUbicacion={this.props.pasaUbicacion(posicion)}/>
 
             )
         }
