@@ -162,40 +162,21 @@ class Jom extends React.Component{
             <React.Fragment>
               
              <div className="row">
-                
-              <div className="col-md-4"></div>
-              
-              <div className="col-md-4">
+            
                   <Buscador  localidades={this.props.localidades}
                   handleOnChange={this.handleOnChange} 
                   especies={this.props.especies} />  
-              </div>
-              
-              <div className="col-md-4"></div>  
-
-            </div>  
-
-            <div className="row"> 
-              <div className="col-md-4"></div>
-
-              <div className="col-md-4">
-
+            </div>
+            <div className="row">
                 <MuestraFiltros localidad = {this.state.filtro.localidad}
                     tipo = {this.state.filtro.tipo}
                     follaje = {this.state.filtro.follaje}
                     nombrecientifico = {this.state.filtro.nombrecientifico}
                     nombrevulgar = {this.state.filtro.nombrevulgar}
                     resultados = {dataFiltrada.length} />
-              </div>
-
-            <div className="col-md-4"></div>
-
-
-
             </div>
 
-            <div className="row">
-              <div className="col-md-12">
+            
 
                 <Mapa datos={dataFiltrada.length === 0 ? arrayDatos : dataFiltrada} 
                 localidades={this.props.localidades} 
@@ -205,9 +186,7 @@ class Jom extends React.Component{
                 viewport={viewport}
                 termino={this.termino}/>     
 
-              </div>
-                                       
-            </div>  
+             
 
             </React.Fragment>
           )

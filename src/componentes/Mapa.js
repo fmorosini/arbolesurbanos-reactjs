@@ -119,22 +119,16 @@ class Mapa extends React.Component{
 
       <React.Fragment>     
 
-            
+          <div className="row">
+        
+        
 
-            <div className="row">
-                
-                <div className="col-md-4"></div>
-                
-                <div className="col-md-4">
+            
                   <Ubicacion pasaUbicacion={this.pasaUbicacion}/>
                   <a id="btnUbicacion"  className={claseBotonUbicacion} onClick={this.toggleSeguimiento}><img src={IconoUbicacion} className={"icono"} alt=""/></a> 
                   <Home irHome={this.irHome}/>
-                </div>
-          
-              <div className="col-md-4"></div>
-
-            </div>
-    
+            </div>   
+            <div className="row">
             {/*<Map center={this.props.centro} zoom={this.props.zoom} crs={L.CRS.EPSG4326}>*/}
             <Map center={this.props.centro} 
               zoom={this.props.zoom}  
@@ -181,7 +175,7 @@ class Mapa extends React.Component{
                     
                   </MarkerClusterGroup> 
             </Map>
-      
+            </div>
       </React.Fragment>
 
       

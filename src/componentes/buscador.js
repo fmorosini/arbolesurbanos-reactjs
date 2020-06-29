@@ -72,56 +72,25 @@ class Buscador extends React.Component{
     render(){
         return(
             <React.Fragment>
-            
-                
-                    <div className="col-md-4">
-
-                    
-                         
-                           
-
-                        
-                    </div>    
-                        
-                   
-
-                    <div className="col-md-4">
-
-
-                        <SelectorLocalidades localidades={this.props.localidades} handleOnClick={this.handleClickLocalidad} />                        
-                    
-                   
-
-                        <a id="btnBuscar" onClick={this.subeEstado} className="btn btn-outline-dark"><img src={Lupa} className="icono" alt=""/></a>
 
                         <button className="btn btn-outline-dark" data-toggle="collapse" data-target="#buscador" >
                             <img src={Filtro} className="icono" alt="filtrar"></img>
                         </button> 
                     
-
-                    </div> 
-
-                    <div className="col-md-4"></div>
-
-                    <div className="col-md-12">
+                        <a id="btnBuscar" onClick={this.subeEstado} className="btn btn-outline-dark"><img src={Lupa} className="icono" alt=""/></a>
                 
-                    <div id="accordion" className="anchoTotal">
-                        <div id="buscador" className="collapse">
+                        <div id="accordion" className="anchoTotal">
+                            <div id="buscador" className="collapse">
+                                
+                                <SelectorLocalidades localidades={this.props.localidades} handleOnClick={this.handleClickLocalidad} />
+                                <AutoCompletarNombreCientifico especies={this.props.especies} onSelectNombreCientifico={this.handleOnChangeNombreCientifico} />
+                                <AutoCompletarNombreVulgar especies={this.props.especies} onSelectNombreVulgar={this.handleOnChangeNombreVulgar} />
+                                <BuscarPorFollaje  handleOnChangeFollaje={this.handleOnChangeFollaje} />
+                                <BuscarPorTipo  handleOnChangeTipo={this.handleOnChangeTipo} />
+
+                            </div>
                             
-                            <AutoCompletarNombreCientifico especies={this.props.especies} onSelectNombreCientifico={this.handleOnChangeNombreCientifico} />
-                            <AutoCompletarNombreVulgar especies={this.props.especies} onSelectNombreVulgar={this.handleOnChangeNombreVulgar} />
-                            <BuscarPorFollaje  handleOnChangeFollaje={this.handleOnChangeFollaje} />
-                            <BuscarPorTipo  handleOnChangeTipo={this.handleOnChangeTipo} />
-
-                        </div>
-
-
                     </div>
-
-
-                </div>
-                
-
 
             </React.Fragment>
         )

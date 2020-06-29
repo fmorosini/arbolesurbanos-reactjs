@@ -105,7 +105,7 @@ class AutoCompletarNombreVulgar extends React.Component {
                         <div className="card">
                             <div className="card-header" id="headingFour">
                             <h5 className="mb-0">
-                                <button className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <button className="btn collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                 Nombre vulgar:
                                 </button>
                             </h5>

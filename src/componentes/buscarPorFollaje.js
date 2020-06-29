@@ -35,7 +35,7 @@ class BuscarPorFollaje extends React.Component{
                     <div className="card">
                             <div className="card-header" id="headingThree">
                             <h5 className="mb-0">
-                                <button className="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <button className="btn collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 Follaje
                                 </button>
                             </h5>
