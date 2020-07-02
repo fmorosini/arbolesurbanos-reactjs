@@ -31,8 +31,6 @@ class MarcadorRT extends React.Component{
     obtenerCoordenadasGPS = (posicion) => {
 
         let coordenadas = posicion.coords
-        
-        console.log("coordenadas: ",posicion)
 
         this.setState((state) => (state.GeolocationCoordinates = coordenadas))          
 
@@ -93,7 +91,7 @@ class MarcadorRT extends React.Component{
 
             return(
 
-                <Marker icon={iconoSeguimiento} position={[posicion.latitude,posicion.longitude]} pasaUbicacion={this.props.pasaUbicacion(posicion)}/>
+                <Marker icon={iconoSeguimiento} position={[posicion.latitude,posicion.longitude]}/>
 
             )
         }

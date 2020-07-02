@@ -48,4 +48,27 @@ ul{
 
   }
 
+  .dropdown-toggle:hover{
+
+    background-color: mediumaquamarine;
+
+  }
+
+  .dropdown-item:hover{
+
+    background-color: mediumaquamarine;
+
+  }
+
+  .dropdown-item.active{
+
+    background-color: mediumaquamarine;
+
+  }
+
+ 
+
+  
+ 
+
   

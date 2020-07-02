@@ -74,8 +74,6 @@ class Mapa extends React.Component{
   
   pasaUbicacion = (ubicacion) => {
 
-      console.log(ubicacion)
-
       this.setState({parametrosMapa: {viewport: {center: [ubicacion.latitude, ubicacion.longitude], zoom: 19}, centro:  [ubicacion.latitude, ubicacion.longitude], zoom: 19}})
 
   }
@@ -120,10 +118,6 @@ class Mapa extends React.Component{
       <React.Fragment>     
 
           <div className="row">
-        
-        
-
-            
                   <Ubicacion pasaUbicacion={this.pasaUbicacion}/>
                   <a id="btnUbicacion"  className={claseBotonUbicacion} onClick={this.toggleSeguimiento}><img src={IconoUbicacion} className={"icono"} alt=""/></a> 
                   <Home irHome={this.irHome}/>
@@ -140,7 +134,7 @@ class Mapa extends React.Component{
               <WMSTileLayer  url=" https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" format='image/png' transparent={false} attribution="Open Street Maps" maxZoom={19} />
              
                   
-                    <MarcadorRT activo={this.state.seguimiento} pasaUbicacion={this.pasaUbicacion}/>
+                    <MarcadorRT activo={this.state.seguimiento}/>
 
                     <MarkerClusterGroup disableClusteringAtZoom={18}>
                     {arbolite.map((arbol,i) => {
